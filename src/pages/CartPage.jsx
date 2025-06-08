@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { dummyProducts } from '../data/products'; // Assuming cart items reference dummyProducts
+import { dummyProducts } from '../data/products';
 
 const CartPage = () => {
-  // Sample cart state (in a real app, this would be managed globally, e.g., via Redux or Context)
   const [cartItems, setCartItems] = useState([
-    { id: 1, quantity: 2 }, // Example: Naik Air Zoom, qty 2
-    { id: 3, quantity: 1 }, // Example: Adibas Ultraboost, qty 1
+    { id: 1, quantity: 2 },
+    { id: 3, quantity: 1 },
   ]);
 
-  // Calculate total price
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => {
       const product = dummyProducts.find((p) => p.id === item.id);
@@ -18,9 +16,8 @@ const CartPage = () => {
     }, 0);
   };
 
-  // Handle quantity change
   const updateQuantity = (id, newQuantity) => {
-    if (newQuantity < 1) return; // Prevent quantity less than 1
+    if (newQuantity < 1) return;
     setCartItems(
       cartItems.map((item) =>
         item.id === id ? { ...item, quantity: newQuantity } : item
@@ -28,13 +25,12 @@ const CartPage = () => {
     );
   };
 
-  // Remove item from cart
   const removeItem = (id) => {
     setCartItems(cartItems.filter((item) => item.id !== id));
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to top on mount
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -70,7 +66,7 @@ const CartPage = () => {
             <div className="grid grid-cols-1 gap-8">
               {cartItems.map((item) => {
                 const product = dummyProducts.find((p) => p.id === item.id);
-                if (!product) return null; // Skip if product not found
+                if (!product) return null;
                 return (
                   <motion.div
                     key={item.id}
@@ -128,9 +124,12 @@ const CartPage = () => {
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">
                   Total: Rp{calculateTotal().toLocaleString('id-ID')}
                 </h3>
-                <button className="bg-black text-white py-3 px-6 rounded-full hover:bg-gray-800 transition-colors text-lg font-semibold">
+                <Link
+                  to="/checkout"
+                  className="inline-block bg-black text-white py-3 px-6 rounded-full hover:bg-gray-800 transition-colors text-lg font-semibold"
+                >
                   Lanjut ke Checkout
-                </button>
+                </Link>
               </div>
             </div>
           )}
