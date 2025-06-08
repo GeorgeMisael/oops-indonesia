@@ -24,7 +24,9 @@ const Navbar = () => {
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-black text-white py-2 shadow-lg" : "bg-transparent text-black py-4"
+        isScrolled 
+          ? "bg-white/90 text-black py-2 shadow-lg backdrop-blur-lg" 
+          : "bg-white/95 text-black py-4 backdrop-blur-lg"
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -50,9 +52,7 @@ const Navbar = () => {
             >
               <Link
                 to={item === "Home" ? "/" : item === "Articles" ? "/articles" : `/${item.toLowerCase()}`}
-                className={`font-medium hover:text-gray-400 transition-colors ${
-                  isScrolled ? "text-white" : "text-black"
-                }`}
+                className={`font-medium hover:text-gray-400 transition-colors text-black`}
               >
                 {item}
               </Link>
@@ -63,7 +63,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button className="md:hidden focus:outline-none" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           <svg
-            className={`w-6 h-6 ${isScrolled ? "text-white" : "text-black"}`}
+            className="w-6 h-6 text-black"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -85,7 +85,7 @@ const Navbar = () => {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-black text-white"
+          className="md:hidden bg-white/95 text-black backdrop-blur-lg"
         >
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             {["Home", "Products", "Articles", "About", "Contact"].map((item) => (
