@@ -7,7 +7,9 @@ import CheckoutPage from "./pages/CheckoutPage"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import DetailProductPage from "./components/ProductPage/DetailProductPage"
-import DetailArticlePage from "./pages/DetailArticlePage" // Import DetailArticlePage
+import DetailArticlePage from "./pages/DetailArticlePage" 
+import Dashboard from "./pages/DashboardPage" 
+import ManageArticles from "./pages/ManageArticles" 
 
 function App() {
   return (
@@ -22,7 +24,8 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/articles" element={<ArticleArchive />} />
           <Route path="/article/:id" element={<DetailArticlePage />} />
-          <Route path="/" element={<DetailArticlePage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/manage-articles" element={<ManageArticles />} />
         </Routes>
       </main>
       <Footer />
