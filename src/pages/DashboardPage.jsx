@@ -15,19 +15,20 @@ const Dashboard = () => {
         >
           <h2 className="text-2xl font-bold text-gray-800 mb-6">Admin Menu</h2>
           <nav className="space-y-4">
-            <Link to="/admin/dashboard" className="block text-lg font-medium text-black hover:text-gray-600">
+            {/* Updated Link paths for sidebar */}
+            <Link to="/dashboard" className="block text-lg font-medium text-black hover:text-gray-600">
               Dashboard
             </Link>
-            <Link to="/admin/articles" className="block text-lg font-medium text-black hover:text-gray-600">
+            <Link to="/manage-articles" className="block text-lg font-medium text-black hover:text-gray-600">
               Kelola Artikel
             </Link>
-            <Link to="/admin/products" className="block text-lg font-medium text-black hover:text-gray-600">
+            <Link to="/manage-products" className="block text-lg font-medium text-black hover:text-gray-600">
               Kelola Produk
             </Link>
-            <Link to="/admin/users" className="block text-lg font-medium text-black hover:text-gray-600">
+            <Link to="/manage-users" className="block text-lg font-medium text-black hover:text-gray-600">
               Kelola Pengguna
             </Link>
-            <Link to="/admin/transactions" className="block text-lg font-medium text-black hover:text-gray-600">
+            <Link to="/manage-transactions" className="block text-lg font-medium text-black hover:text-gray-600">
               Kelola Transaksi
             </Link>
           </nav>
@@ -44,28 +45,29 @@ const Dashboard = () => {
             <div className="bg-gray-100 p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Total Artikel</h3>
               <p className="text-3xl font-bold text-black">12</p>
-              <Link to="/admin/articles" className="mt-4 inline-block text-blue-600 hover:underline">
+              {/* Updated Link paths for dashboard cards */}
+              <Link to="/manage-articles" className="mt-4 inline-block text-blue-600 hover:underline">
                 Lihat Artikel
               </Link>
             </div>
             <div className="bg-gray-100 p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Total Produk</h3>
               <p className="text-3xl font-bold text-black">8</p>
-              <Link to="/admin/products" className="mt-4 inline-block text-blue-600 hover:underline">
+              <Link to="/manage-products" className="mt-4 inline-block text-blue-600 hover:underline">
                 Lihat Produk
               </Link>
             </div>
             <div className="bg-gray-100 p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Total Pengguna</h3>
               <p className="text-3xl font-bold text-black">3</p>
-              <Link to="/admin/users" className="mt-4 inline-block text-blue-600 hover:underline">
+              <Link to="/manage-users" className="mt-4 inline-block text-blue-600 hover:underline">
                 Lihat Pengguna
               </Link>
             </div>
             <div className="bg-gray-100 p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Total Transaksi</h3>
               <p className="text-3xl font-bold text-black">2</p>
-              <Link to="/admin/transactions" className="mt-4 inline-block text-blue-600 hover:underline">
+              <Link to="/manage-transactions" className="mt-4 inline-block text-blue-600 hover:underline">
                 Lihat Transaksi
               </Link>
             </div>
