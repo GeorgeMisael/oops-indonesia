@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { Link } from "react-router-dom"
 
 // Sample article data
 const articles = [
@@ -113,7 +114,7 @@ const articles = [
     date: "November 25, 2023",
     author: "Andien Aisyah",
   },
-]
+];
 
 // Extract unique categories
 const categories = ["All", ...new Set(articles.map((article) => article.category))]
@@ -157,19 +158,15 @@ const ArticleArchive = () => {
         observer.unobserve(loaderRef.current)
       }
     }
-  }, [loaderRef, loading, visibleArticles, filteredArticles])
+  },)
 
   const loadMoreArticles = () => {
     setLoading(true)
-
-    // Simulate API call delay
     setTimeout(() => {
       const nextPage = page + 1
       const startIndex = (nextPage - 1) * articlesPerPage
       const endIndex = startIndex + articlesPerPage
-
       setVisibleArticles((prevArticles) => [...prevArticles, ...filteredArticles.slice(startIndex, endIndex)])
-
       setPage(nextPage)
       setLoading(false)
     }, 800)
@@ -177,7 +174,6 @@ const ArticleArchive = () => {
 
   return (
     <div className="pt-16 min-h-screen">
-      {/* Hero Section */}
       <div className="bg-black text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <motion.h1
@@ -198,8 +194,6 @@ const ArticleArchive = () => {
           </motion.p>
         </div>
       </div>
-
-      {/* Category Filter */}
       <div className="bg-white py-8 sticky top-16 z-10 shadow-md">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4">
@@ -220,8 +214,6 @@ const ArticleArchive = () => {
           </div>
         </div>
       </div>
-
-      {/* Articles Grid */}
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <AnimatePresence mode="wait">
@@ -258,28 +250,25 @@ const ArticleArchive = () => {
                     <h3 className="text-xl font-bold mb-2">{article.title}</h3>
                     <p className="text-gray-600 mb-4">{article.excerpt}</p>
                     <div className="article-preview">
-                      <button className="text-black font-medium hover:underline">Read More →</button>
+                      <Link
+                        to={`/article/${article.id}`}
+                        className="text-black font-medium hover:underline"
+                      >
+                        Read More →
+                      </Link>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
           </AnimatePresence>
-
-          {/* Loading indicator */}
           {visibleArticles.length < filteredArticles.length && (
             <div ref={loaderRef} className="flex justify-center mt-12">
               {loading ? (
                 <div className="flex items-center space-x-2">
                   <div className="w-4 h-4 rounded-full bg-black animate-bounce" style={{ animationDelay: "0ms" }}></div>
-                  <div
-                    className="w-4 h-4 rounded-full bg-black animate-bounce"
-                    style={{ animationDelay: "150ms" }}
-                  ></div>
-                  <div
-                    className="w-4 h-4 rounded-full bg-black animate-bounce"
-                    style={{ animationDelay: "300ms" }}
-                  ></div>
+                  <div className="w-4 h-4 rounded-full bg-black animate-bounce" style={{ animationDelay: "150ms" }}></div>
+                  <div className="w-4 h-4 rounded-full bg-black animate-bounce" style={{ animationDelay: "300ms" }}></div>
                 </div>
               ) : (
                 <button
@@ -291,8 +280,6 @@ const ArticleArchive = () => {
               )}
             </div>
           )}
-
-          {/* No articles message */}
           {filteredArticles.length === 0 && (
             <div className="text-center py-12">
               <h3 className="text-xl font-bold mb-2">No articles found</h3>
@@ -301,8 +288,6 @@ const ArticleArchive = () => {
           )}
         </div>
       </div>
-
-      {/* Newsletter Section */}
       <div className="bg-black text-white py-16">
         <div className="container mx-auto px-4 max-w-3xl text-center">
           <motion.div
@@ -315,19 +300,18 @@ const ArticleArchive = () => {
             <p className="text-lg text-gray-300 mb-8">
               Subscribe to our newsletter for the latest articles, sneaker releases, and exclusive content.
             </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
               <input
                 type="email"
                 placeholder="Your email address"
                 className="flex-grow px-4 py-3 rounded-full bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-white"
               />
               <button
-                type="submit"
                 className="bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition-colors"
               >
                 Subscribe
               </button>
-            </form>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -3,10 +3,11 @@ import LandingPage from "./pages/LandingPage"
 import ArticleArchive from "./pages/ArticleArchive"
 import ProductPage from "./pages/ProductPage"
 import CartPage from "./pages/CartPage"
-import CheckoutPage from "./pages/CheckoutPage" // Import CheckoutPage
+import CheckoutPage from "./pages/CheckoutPage"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import DetailProductPage from "./components/ProductPage/DetailProductPage"
+import DetailArticlePage from "./pages/DetailArticlePage" // Import DetailArticlePage
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
           <Route path="/products" element={<ProductPage />} />
           <Route path="/product/:id" element={<DetailProductPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} /> {/* Add CheckoutPage route */}
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/articles" element={<ArticleArchive />} />
+          <Route path="/article/:id" element={<DetailArticlePage />} />
+          <Route path="/" element={<DetailArticlePage />} />
         </Routes>
       </main>
       <Footer />
