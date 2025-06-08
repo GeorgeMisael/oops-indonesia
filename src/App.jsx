@@ -10,6 +10,9 @@ import DetailProductPage from "./components/ProductPage/DetailProductPage"
 import DetailArticlePage from "./pages/DetailArticlePage" 
 import Dashboard from "./pages/DashboardPage" 
 import ManageArticles from "./pages/ManageArticles" 
+import ManageProducts from "./pages/ManageProducts" 
+import ManageUsers from "./pages/ManageUsers" 
+import ManageTransactions from "./pages/ManageTransactions" 
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
           <Route path="/article/:id" element={<DetailArticlePage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/manage-articles" element={<ManageArticles />} />
+          <Route path="/manage-products" element={<ManageProducts />} />
+          <Route path="/manage-users" element={<ManageUsers />} />
+          <Route path="/manage-transactions" element={<ManageTransactions />} />
         </Routes>
       </main>
       <Footer />
